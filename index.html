@@ -63,7 +63,7 @@
             text-transform: uppercase;
             box-shadow: 0 0 10px rgba(43, 217, 153, 0.2);
             position: relative;
-            z-index: 1; /* Drop layer weight so mobile overlay can cover it */
+            z-index: 1;
         }
 
         .nav-links {
@@ -108,7 +108,7 @@
             width: 24px;
             height: 18px;
             cursor: pointer;
-            z-index: 4; /* Keeps the click target above everything else */
+            z-index: 4;
         }
 
         .menu-toggle span {
@@ -428,12 +428,26 @@
 
         .timeline-content {
             padding: 20px; background: var(--bg-alt); border: 1px solid var(--border-faint);
-            transition: all 0.4s ease; cursor: pointer; text-align: center;
+            transition: all 0.4s ease; cursor: pointer; 
+            text-align: center; /* 平常保持置中 */
         }
-        .timeline-content:hover { border-color: var(--accent); text-align: left; }
+        
+        /* 【已修正】移除了原本的 text-align: left，讓整體框內長期保持置中，不跳動 */
+        .timeline-content:hover { 
+            border-color: var(--accent); 
+        }
 
         .timeline-content .year { font-weight: 700; color: var(--accent); font-size: 1.5rem; transition: all 0.3s ease; }
-        .timeline-content:hover .year { font-size: 0.85rem; background: var(--accent); color: var(--bg-main); padding: 2px 8px; margin-bottom: 1rem; display: inline-block; }
+        
+        /* 讓展開後的年份小標籤在置中容器內也能完美維持在正中央 */
+        .timeline-content:hover .year { 
+            font-size: 0.85rem; 
+            background: var(--accent); 
+            color: var(--bg-main); 
+            padding: 2px 8px; 
+            margin: 0 auto 1rem auto; 
+            display: inline-block; 
+        }
 
         .award-details { max-height: 0; opacity: 0; overflow: hidden; transition: all 0.4s ease; }
         .timeline-content:hover .award-details { max-height: 500px; opacity: 1; margin-top: 0.5rem; }
@@ -490,10 +504,9 @@
         @media (max-width: 768px) {
             .menu-toggle { 
                 display: flex; 
-                z-index: 5; /* Stays above backdrop and sidebar panel */
+                z-index: 5; 
             }
             
-            /* Responsive Navigation Panel */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -508,12 +521,11 @@
                 gap: 2.5rem;
                 transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
                 border-left: 1px solid var(--border-faint);
-                z-index: 3; /* Completely covers the logo frame (z-index: 1) */
+                z-index: 3; 
             }
             
-            /* Isolated backdrop layer handles the blur overlay */
             .nav-backdrop {
-                z-index: 2; /* Sits over the logo frame but under the navigation panel */
+                z-index: 2; 
             }
 
             .nav-links a { 
@@ -532,7 +544,6 @@
             .nav-links.active a:nth-child(4) { transition-delay: 0.33s; }
             .nav-links.active a:nth-child(5) { transition-delay: 0.40s; }
 
-            /* Mobile UI optimization tweaks */
             section { padding: 100px 1.5rem 60px 1.5rem; }
             .hero { padding-left: 5%; padding-right: 5%; padding-top: 120px; }
             .swiper-section { padding-top: 20px; }
@@ -557,7 +568,7 @@
 <body>
 
     <nav class="navbar">
-        <div class="nav-logo">BrbrBrian.PoPortfolio</div>
+        <div class="nav-logo">SYS.ARCHIVE</div>
         
         <div class="nav-backdrop" id="nav-backdrop"></div>
         
@@ -867,7 +878,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <section id="contact" class="fade-in">
