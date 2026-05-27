@@ -34,7 +34,6 @@
             transition: background 0.3s ease;
         }
 
-        /* Prevent background scrolling when mobile menu is active */
         body.menu-open {
             overflow: hidden;
         }
@@ -63,7 +62,8 @@
             padding: 5px 12px;
             text-transform: uppercase;
             box-shadow: 0 0 10px rgba(43, 217, 153, 0.2);
-            z-index: 1001; 
+            position: relative;
+            z-index: 1; /* Drop layer weight so mobile overlay can cover it */
         }
 
         .nav-links {
@@ -86,13 +86,12 @@
             text-shadow: 0 0 8px rgba(43, 217, 153, 0.6);
         }
 
-        /* High-isolation backdrop to prevent clashing with page UI */
         .nav-backdrop {
             position: fixed;
             inset: 0;
             background: rgba(9, 18, 16, 0.6);
             backdrop-filter: blur(4px);
-            z-index: 998; 
+            z-index: 2; 
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s ease;
@@ -102,7 +101,6 @@
             pointer-events: auto;
         }
 
-        /* Animated Hamburger Toggle Button */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -110,7 +108,7 @@
             width: 24px;
             height: 18px;
             cursor: pointer;
-            z-index: 1001;
+            z-index: 4; /* Keeps the click target above everything else */
         }
 
         .menu-toggle span {
@@ -121,7 +119,6 @@
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
         }
 
-        /* Transform hamburger lines into an 'X' */
         .menu-toggle.active span:nth-child(1) {
             transform: translateY(8px) rotate(45deg);
         }
@@ -489,9 +486,12 @@
 
         .modal-btn { display: inline-block; background: var(--accent); color: var(--bg-main); padding: 10px 24px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
 
-        /* --- 10. ADVANCED MOBILE RESPONSIVENESS (CSS Animations for Navigation) --- */
+        /* --- 10. ADVANCED MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .menu-toggle { display: flex; }
+            .menu-toggle { 
+                display: flex; 
+                z-index: 5; /* Stays above backdrop and sidebar panel */
+            }
             
             /* Responsive Navigation Panel */
             .nav-links {
@@ -506,12 +506,16 @@
                 justify-content: center;
                 align-items: center;
                 gap: 2.5rem;
-                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Elegant fluid movement */
+                transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
                 border-left: 1px solid var(--border-faint);
-                z-index: 999;
+                z-index: 3; /* Completely covers the logo frame (z-index: 1) */
             }
             
-            /* Menu Links Initial States for Animation */
+            /* Isolated backdrop layer handles the blur overlay */
+            .nav-backdrop {
+                z-index: 2; /* Sits over the logo frame but under the navigation panel */
+            }
+
             .nav-links a { 
                 font-size: 1.25rem; 
                 opacity: 0;
@@ -519,18 +523,16 @@
                 transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
             }
 
-            /* Triggered slide out states */
             .nav-links.active { right: 0; }
             .nav-links.active a { opacity: 1; transform: translateY(0); }
             
-            /* Cascading delays for links inside the animation loop */
             .nav-links.active a:nth-child(1) { transition-delay: 0.12s; }
             .nav-links.active a:nth-child(2) { transition-delay: 0.19s; }
             .nav-links.active a:nth-child(3) { transition-delay: 0.26s; }
             .nav-links.active a:nth-child(4) { transition-delay: 0.33s; }
             .nav-links.active a:nth-child(5) { transition-delay: 0.40s; }
 
-            /* Spacing optimization */
+            /* Mobile UI optimization tweaks */
             section { padding: 100px 1.5rem 60px 1.5rem; }
             .hero { padding-left: 5%; padding-right: 5%; padding-top: 120px; }
             .swiper-section { padding-top: 20px; }
@@ -554,10 +556,10 @@
 </head>
 <body>
 
-    <div class="nav-backdrop" id="nav-backdrop"></div>
-
     <nav class="navbar">
-        <div class="nav-logo">SYS.ARCHIVE</div>
+        <div class="nav-logo">BrbrBrian.PoPortfolio</div>
+        
+        <div class="nav-backdrop" id="nav-backdrop"></div>
         
         <div class="menu-toggle" id="mobile-menu">
             <span></span>
@@ -702,31 +704,166 @@
                 <div class="timeline-content">
                     <div class="year">2026</div>
                     <div class="award-details">
-                        <img src="https://i.imgur.com/5Y27xRg.png" alt="Award" class="award-img">
+                        <img src="https://i.imgur.com/5Y27xRg.png" alt="Tech Award" class="award-img">
                         <h3>逆水暢遊</h3>
-                        <p>CURRENT STATUS</p>
+                        <p>NOW</p>
                     </div>
                 </div>
             </div>
+            
             <div class="timeline-item right fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="year">2025</div>
                     <div class="award-details">
-                        <img src="https://i.imgur.com/wHDSr5W.png" alt="Award" class="award-img">
-                        <h3>Youth Geometry Olympiad</h3>
-                        <p>- Fourth place ranking achieved.</p>
+                        <img src="https://i.imgur.com/wHDSr5W.png" alt="Milestone" class="award-img">
+                        <h3>International Youth Geometry Olympiad </h3>
+                        <p>-Fourth place</p>
                     </div>
                 </div>
             </div>
+            
+            <div class="timeline-item left fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2024</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/1XZejXb.jpeg" alt="Milestone" class="award-img">
+                        <h3>Started to think math is fun</h3>
+                        <p>I started know the way to learn and feel  that learning is interesting.</p>
+                    </div>
+            
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/EiEgJA9.png" alt="Milestone" class="award-img">
+                        <h3>Chinese Culture Conservation Metaverse Creation Competition </h3>
+                        <p>-Best Metaverse Technology Award -Merit Award</p>
+                    </div>
+            
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/82VDPsz.png" alt="Milestone" class="award-img">
+                        <h3>Hong Kong Game Development Competition Award Ceremony </h3>
+                        <p>-Fourth place -Best Game Design Award</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2023</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/ePXtIvs.png" alt="Gaming Award" class="award-img">
+                        <h3>HongKong Cultural Heritage Metaverse Competition</h3>
+                        <p>-Merit Award</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2022</div>
+                    <div class="award-details">
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=500" alt="Milestone" class="award-img">
+                        <h3>X-vector</h3>
+                        <p>Add a description of what you were working on or learning during this time.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2021</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/R3EXbGa.png" alt="Milestone" class="award-img">
+                        <h3>Racing</h3>
+                        <p>A racing game that very fun and have over 1k player keep online.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2020</div>
+                    <div class="award-details">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500" alt="Milestone" class="award-img">
+                        <h3>Started to think electrical enginering is fun</h3>
+                        <p>Started to play with micobit , ESP32 and raspberry pi.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2019</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/zXGof0z.png" alt="Milestone" class="award-img">
+                        <h3>Nigeria Life</h3>
+                        <p>At that time i think africa is a sad place so i made a game for it.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2018</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/DG6fchV.png" alt="Science Fair" class="award-img">
+                        <h3>God Piece Battle Arena</h3>
+                        <p>A roblox fighting game with anime character power.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2017</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/lwkNBgW.jpeg" alt="Milestone" class="award-img">
+                        <h3>Get my frist pc</h3>
+                        <p>I started want to build a game myself so firsly i build my own pc.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item left fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2016</div>
+                    <div class="award-details">
+                        <img src="https://images.unsplash.com/photo-1506143925201-0252c51780b0?q=80&w=500" alt="Milestone" class="award-img">
+                        <h3>Started to think that origami is fun</h3>
+                        <p>I made a entire wall full of origami.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item right fade-in">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="year">2015</div>
+                    <div class="award-details">
+                        <img src="https://i.imgur.com/3yyJ4F0.png" alt="Milestone" class="award-img">
+                        <h3>Started Playing Roblox</h3>
+                        <p>That started make me feel i should make my own game.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div class="timeline-item left fade-in">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
                     <div class="year">2008</div>
                     <div class="award-details">
-                        <img src="https://i.imgur.com/eGzXTlH.png" alt="Start" class="award-img">
-                        <h3>System Boot</h3>
-                        <p>I Was Born. My journey started.</p>
+                        <img src="https://i.imgur.com/eGzXTlH.png" alt="Building Blocks" class="award-img">
+                        <h3>I Was Born</h3>
+                        <p>My journey start.</p>
                     </div>
                 </div>
             </div>
@@ -782,13 +919,12 @@
             navLinks.classList.toggle('active');
             menuToggle.classList.toggle('active');
             navBackdrop.classList.toggle('active');
-            document.body.classList.toggle('menu-open'); // Dynamic Scroll-Lock
+            document.body.classList.toggle('menu-open'); 
         }
 
         menuToggle.addEventListener('click', toggleMenu);
         navBackdrop.addEventListener('click', toggleMenu);
 
-        // Safely collapse system states when a navigation link executes
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
