@@ -414,7 +414,27 @@
         /* --- 7. TIMELINE --- */
         .timeline { position: relative; max-width: 900px; margin: 0 auto; width: 100%; }
         .timeline::after { content: ''; position: absolute; width: 1px; background: var(--border-faint); top: 0; bottom: 0; left: 50%; }
-        
+        /* --- Pre-set Open State for Timeline Hint --- */
+        .timeline-content.force-open { 
+            border-color: var(--accent); 
+        }
+        .timeline-content.force-open .year { 
+            font-size: 0.85rem; 
+            background: var(--accent); 
+            color: var(--bg-main); 
+            padding: 2px 8px; 
+            margin: 0 auto 1rem auto; 
+            display: inline-block; 
+        }
+        .timeline-content.force-open .award-details { 
+            max-height: 500px; 
+            opacity: 1; 
+            margin-top: 0.5rem; 
+        }
+        .timeline-content.force-open .award-img { 
+            filter: grayscale(0%); 
+        }
+
         .timeline-item { padding: 10px 40px; position: relative; width: 50%; }
         .timeline-item.left { left: 0; }
         .timeline-item.right { left: 50%; }
@@ -730,12 +750,12 @@
         <div class="timeline">
             <div class="timeline-item left fade-in">
                 <div class="timeline-dot"></div>
-                <div class="timeline-content">
+                <div class="timeline-content force-open" id="first-milestone">
                     <div class="year">2026</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/5Y27xRg.png" alt="Tech Award" class="award-img">
                         <h3>逆水暢遊</h3>
-                        <p>NOW</p>
+                        <p>My latest flagship project blending immersive spatial mechanics with intelligent AI-driven environments to challenge traditional interactive paradigms.</p>
                     </div>
                 </div>
             </div>
@@ -746,8 +766,8 @@
                     <div class="year">2025</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/wHDSr5W.png" alt="Milestone" class="award-img">
-                        <h3>International Youth Geometry Olympiad </h3>
-                        <p>-Fourth place</p>
+                        <h3>International Youth Geometry Olympiad</h3>
+                        <p>Awarded 4th Place. Deepened my mathematical foundation in geometry, which directly informs my logic for complex 3D world-building and architectural rendering.</p>
                     </div>
                 </div>
             </div>
@@ -758,23 +778,22 @@
                     <div class="year">2024</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/1XZejXb.jpeg" alt="Milestone" class="award-img">
-                        <h3>Started to think math is fun</h3>
-                        <p>I started know the way to learn and feel  that learning is interesting.</p>
+                        <h3>Discovering Algorithmic Joy</h3>
+                        <p>Unlocked the beauty of mathematics, realizing it is the core operating system behind game physics and digital space creation.</p>
                     </div>
             
                     <div class="award-details">
                         <img src="https://i.imgur.com/EiEgJA9.png" alt="Milestone" class="award-img">
-                        <h3>Chinese Culture Conservation Metaverse Creation Competition </h3>
-                        <p>-Best Metaverse Technology Award -Merit Award</p>
+                        <h3>Chinese Culture Conservation Metaverse Competition</h3>
+                        <p>Won Best Metaverse Technology Award & Merit Award. Reconstructed historical heritage into digital spaces, fostering community interaction with cultural history.</p>
                     </div>
             
                     <div class="award-details">
                         <img src="https://i.imgur.com/82VDPsz.png" alt="Milestone" class="award-img">
-                        <h3>Hong Kong Game Development Competition Award Ceremony </h3>
-                        <p>-Fourth place -Best Game Design Award</p>
+                        <h3>Hong Kong Game Development Competition</h3>
+                        <p>Won 4th Place & Best Game Design Award. Recognized for innovative gameplay loops that enhance multi-player social engagement and community retention.</p>
                     </div>
                 </div>
-                
             </div>
             
             <div class="timeline-item right fade-in">
@@ -783,8 +802,8 @@
                     <div class="year">2023</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/ePXtIvs.png" alt="Gaming Award" class="award-img">
-                        <h3>HongKong Cultural Heritage Metaverse Competition</h3>
-                        <p>-Merit Award</p>
+                        <h3>Hong Kong Cultural Heritage Metaverse Competition</h3>
+                        <p>Won Merit Award. Explored how virtual public spaces can serve as interactive platforms for community building and identity conservation.</p>
                     </div>
                 </div>
             </div>
@@ -795,8 +814,8 @@
                     <div class="year">2022</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/6ADWBA6.png" alt="Milestone" class="award-img">
-                        <h3>X-vector</h3>
-                        <p>Add a description of what you were working on or learning during this time.</p>
+                        <h3>Project X-vector</h3>
+                        <p>Researched vector algorithms and motion mechanics in 3D physics engines to realize seamless fluid movement inside virtual realities.</p>
                     </div>
                 </div>
             </div>
@@ -808,7 +827,7 @@
                     <div class="award-details">
                         <img src="https://i.imgur.com/R3EXbGa.png" alt="Milestone" class="award-img">
                         <h3>Racing</h3>
-                        <p>A racing game that very fun and have over 1k player keep online.</p>
+                        <p>Designed a highly engaging multiplayer racing game that successfully cultivated an active virtual community with 1k+ concurrent players.</p>
                     </div>
                 </div>
             </div>
@@ -819,8 +838,8 @@
                     <div class="year">2020</div>
                     <div class="award-details">
                         <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=500" alt="Milestone" class="award-img">
-                        <h3>Started to think electrical enginering is fun</h3>
-                        <p>Started to play with micobit , ESP32 and raspberry pi.</p>
+                        <h3>Exploring Tangible Computing</h3>
+                        <p>Began experimenting with Micro:bit, ESP32, and Raspberry Pi, bridging the physical-digital gap to explore the concept of hybrid interactive spaces.</p>
                     </div>
                 </div>
             </div>
@@ -832,7 +851,7 @@
                     <div class="award-details">
                         <img src="https://i.imgur.com/zXGof0z.png" alt="Milestone" class="award-img">
                         <h3>Nigeria Life</h3>
-                        <p>At that time i think africa is a sad place so i made a game for it.</p>
+                        <p>An empathy-driven narrative game designed to highlight social issues in Africa, utilizing digital storytelling to evoke humanistic care within the player base.</p>
                     </div>
                 </div>
             </div>
@@ -844,7 +863,7 @@
                     <div class="award-details">
                         <img src="https://i.imgur.com/DG6fchV.png" alt="Science Fair" class="award-img">
                         <h3>God Piece Battle Arena</h3>
-                        <p>A roblox fighting game with anime character power.</p>
+                        <p>My first attempt at developing a multi-player arena, learning how competitive mechanics guide real-time community interaction and social bonding.</p>
                     </div>
                 </div>
             </div>
@@ -855,8 +874,8 @@
                     <div class="year">2017</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/lwkNBgW.jpeg" alt="Milestone" class="award-img">
-                        <h3>Get my frist pc</h3>
-                        <p>I started want to build a game myself so firsly i build my own pc.</p>
+                        <h3>Hardware Awakening</h3>
+                        <p>Assembled my very first custom PC, taking full control of the hardware foundation needed to fuel my journey into full-stack game development.</p>
                     </div>
                 </div>
             </div>
@@ -867,8 +886,8 @@
                     <div class="year">2016</div>
                     <div class="award-details">
                         <img src="https://images.unsplash.com/photo-1506143925201-0252c51780b0?q=80&w=500" alt="Milestone" class="award-img">
-                        <h3>Started to think that origami is fun</h3>
-                        <p>I made a entire wall full of origami.</p>
+                        <h3>Origami Structure Art</h3>
+                        <p>Constructed an entire wall of complex origami, sparking my lifelong fascination with transforming flat geometry into 3D physical structures.</p>
                     </div>
                 </div>
             </div>
@@ -879,8 +898,8 @@
                     <div class="year">2015</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/3yyJ4F0.png" alt="Milestone" class="award-img">
-                        <h3>Started Playing Roblox</h3>
-                        <p>That started make me feel i should make my own game.</p>
+                        <h3>The Sandbox Horizon</h3>
+                        <p>Entered the world of Roblox. The shift from a passive user to an active observer ignited my obsession with creating custom, shared digital environments.</p>
                     </div>
                 </div>
             </div>
@@ -891,12 +910,12 @@
                     <div class="year">2008</div>
                     <div class="award-details">
                         <img src="https://i.imgur.com/eGzXTlH.png" alt="Building Blocks" class="award-img">
-                        <h3>I Was Born</h3>
-                        <p>My journey start.</p>
+                        <h3>System Initialized</h3>
+                        <p>The baseline configuration of a lifelong creator. The deployment of a journey dedicated to arts, technology, and space.</p>
                     </div>
                 </div>
             </div>
-    </section>
+        </div>
 
     <section id="contact" class="fade-in">
         <span class="section-tag">// Network</span>
@@ -1024,7 +1043,16 @@
             const y = (window.innerHeight - e.pageY * 2) / 60;
             obj.style.transform = `translate(${x}px, ${y}px)`;
         });
-
+        
+        // --- TIMELINE HINT LOGIC ---
+        // Removes the force-open class once the user hovers over it, 
+        // letting the normal CSS :hover logic take over permanently.
+        const firstMilestone = document.getElementById('first-milestone');
+        if (firstMilestone) {
+            firstMilestone.addEventListener('mouseenter', () => {
+                firstMilestone.classList.remove('force-open');
+            }, { once: true }); // { once: true } ensures the event only fires the very first time
+        }
 
         // --- 5. LERP CANVAS ENGINE (DOT TO DYNAMIC BINARY) ---
         const canvas = document.getElementById('ascii-bg');
