@@ -497,26 +497,18 @@
         }
         .send-btn:hover { background: var(--accent); color: var(--bg-main); }
 
-        /* --- 9. MODAL --- */
-        .modal {
-            display: none;
-            position: fixed; 
-            z-index: 20; 
-            inset: 0;
-            background: rgba(21, 38, 35, 0.9); 
-            backdrop-filter: blur(5px);
-            align-items: top;
-            margin-top: -400px; 
-            justify-content: center; 
-            padding: .5rem; opacity: 0; 
-            transition: opacity 0.3s ease;
+ /* --- 9. MODAL --- */
+ .modal {
+            display: none; position: fixed; z-index: 2000; inset: 0;
+            background: rgba(21, 38, 35, 0.9); backdrop-filter: blur(5px);
+             margin-top: -450px; justify-content: center; align-items: auto; padding: 2rem; opacity: 0; transition: opacity 0.3s ease;
         }
         .modal.active { display: flex; opacity: 1; }
 
         .modal-content {
             background: var(--bg-main); border: 1px solid var(--accent);
             max-width: 850px; width: 100%; display: flex; flex-direction: column;
-            position: relative; transform: scale(0.95); transition: transform 0.3s ease;
+            position: relative;  transform: scale(0.95); transition: transform 0.3s ease;
         }
         .modal.active .modal-content { transform: scale(1); }
 
@@ -744,29 +736,30 @@
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-card show" data-category="3d">
-                <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=600" alt="3D">
+            <div class="gallery-card show" data-category="hardware" data-link="https://www.roblox.com/games/your-game-id">
+                <img src="https://i.imgur.com/Op90gDv.png" alt="hardware">
                 <div class="gallery-info">
-                    <h3>Sci-Fi City Map</h3>
-                    <p>Optimized low-poly map for Roblox.</p>
+                    <h3>Nigeria-life</h3>
+                    <p>An empathy-driven narrative game designed to highlight social issues in Africa, utilizing digital storytelling to evoke humanistic care within the player base.</p>
+                    <span class="tag">.Game Design</span>
+                </div>
+            </div>
+            <div class="gallery-card show" data-category="3d" data-link="https://www.roblox.com/games/16950385738/raceing">
+                <img src="https://i.imgur.com/artR3Py.png" alt="3D">
+                <div class="gallery-info">
+                    <h3>Racing</h3>
+                    <p>Designed a highly engaging multiplayer racing game that successfully cultivated an active virtual community with a great amount of concurrent players.</p>
                     <span class="tag">.3D</span>
                 </div>
             </div>
-            <div class="gallery-card show" data-category="web">
-                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=600" alt="Web">
+            <div class="gallery-card show" data-category="web" data-link="https://x-vectors.com/">
+                <img src="https://i.imgur.com/490UKwo.png" alt="web">
                 <div class="gallery-info">
-                    <h3>Interactive Portfolio</h3>
-                    <p>Dynamic front-end web experience.</p>
-                    <span class="tag">.WEB</span>
+                    <h3>X-vectors</h3>
+                    <p>Build a website for a company anchor massive, slow-moving enterprises by turning unstructured paperwork into clean logic for standard internal software systems.</p>
+                    <span class="tag">.Web Design</span>
                 </div>
             </div>
-            <div class="gallery-card show" data-category="hardware">
-                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600" alt="Hardware">
-                <div class="gallery-info">
-                    <h3>Smart Desk Lamp</h3>
-                    <p>Custom circuits & 3D housing.</p>
-                    <span class="tag">.HW</span>
-                </div>
             </div>
         </div>
     </section>
@@ -816,7 +809,7 @@
                     </div>
             
                     <div class="award-details">
-                        <img src="https://i.imgur.com/EiEgJA9.png" alt="Milestone" class="award-img">
+                        <img src="https://i.imgur.com/g7K98g9.png" alt="Milestone" class="award-img">
                         <h3>Chinese Culture Conservation Metaverse Competition</h3>
                         <p>Won Best Metaverse Technology Award & Merit Award. Reconstructed historical heritage into digital spaces, fostering community interaction with cultural history.</p>
                     </div>
@@ -834,7 +827,7 @@
                 <div class="timeline-content">
                     <div class="year">2023</div>
                     <div class="award-details">
-                        <img src="https://i.imgur.com/jnjMOOi.png" alt="Gaming Award" class="award-img">
+                        <img src="https://i.imgur.com/NUnN30Y.png" alt="Gaming Award" class="award-img">
                         <h3>Hong Kong Cultural Heritage Metaverse Competition</h3>
                         <p>Won Merit Award. Explored how virtual public spaces can serve as interactive platforms for community building and identity conservation.</p>
                     </div>
@@ -1125,20 +1118,39 @@
         });
 
 
-        // --- 7. MODAL ---
-        const modal = document.getElementById('project-modal');
+// --- 7. MODAL ---
+        // FIX #1: Use querySelector('.modal') to grab the modal safely
+        const modal = document.querySelector('.modal'); 
         const closeBtn = document.querySelector('.close-btn');
 
         galleryCards.forEach(card => {
             card.addEventListener('click', () => {
+                // Populate the modal with image, title, desc, and tag
                 document.getElementById('modal-img').src = card.querySelector('img').src;
                 document.getElementById('modal-title').innerText = card.querySelector('h3').innerText;
                 document.getElementById('modal-desc').innerText = card.querySelector('p').innerText;
                 document.getElementById('modal-tag').innerText = card.querySelector('.tag').innerText;
+                
+                // FIX #2: Make the external link work dynamically
+                const projectLink = card.getAttribute('data-link'); // Grab the URL from the clicked card
+                const modalLinkBtn = document.getElementById('modal-link'); // Find the button inside the modal
+                
+                if (modalLinkBtn) {
+                    if (projectLink) {
+                        modalLinkBtn.href = "https://www.roblox.com/games/14179573129/Nigeria-Life"; // Set the URL
+                        modalLinkBtn.style.display = 'inline-block'; // Show the button
+                    } else {
+                        // If you forgot to add a data-link to a card, hide the button so it doesn't look broken
+                        modalLinkBtn.style.display = 'none'; 
+                    }
+                }
+
+                // Open the modal
                 modal.classList.add('active');
             });
         });
 
+        // Close logic remains the same
         closeBtn.addEventListener('click', () => modal.classList.remove('active'));
         window.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
     </script>
