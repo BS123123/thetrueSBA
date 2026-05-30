@@ -501,7 +501,7 @@
  .modal {
             display: none; position: fixed; z-index: 2000; inset: 0;
             background: rgba(21, 38, 35, 0.9); backdrop-filter: blur(5px);
-             margin-top: -450px; justify-content: center; align-items: auto; padding: 2rem; opacity: 0; transition: opacity 0.3s ease;
+            justify-content: center; margin-top: -600px; padding: 2rem; opacity: 0; transition: opacity 0.3s ease;
         }
         .modal.active { display: flex; opacity: 1; }
 
@@ -736,7 +736,7 @@
         </div>
 
         <div class="gallery-grid">
-            <div class="gallery-card show" data-category="hardware" data-link="https://www.roblox.com/games/your-game-id">
+            <div class="gallery-card show" data-category="hardware" data-link="https://www.roblox.com/games/14179573129/Nigeria-Life">
                 <img src="https://i.imgur.com/Op90gDv.png" alt="hardware">
                 <div class="gallery-info">
                     <h3>Nigeria-life</h3>
@@ -749,6 +749,30 @@
                 <div class="gallery-info">
                     <h3>Racing</h3>
                     <p>Designed a highly engaging multiplayer racing game that successfully cultivated an active virtual community with a great amount of concurrent players.</p>
+                    <span class="tag">.3D</span>
+                </div>
+            </div>
+            <div class="gallery-card show" data-category="hardware" >
+                <img src="https://i.imgur.com/ZaQyiJT.png" alt="hardware">
+                <div class="gallery-info">
+                    <h3>SoundHub</h3>
+                    <p>Sound Hub is a 3D-printed, ESP32-powered rotary smart device created for a visually impaired grandfather to easily hear daily news.</p>
+                    <span class="tag">.Electronics</span>
+                </div>
+            </div>
+            <div class="gallery-card show" data-category="web" data-link="https://brian3dthing.netlify.app/" >
+                <img src="https://i.imgur.com/by78XVq.png" alt="web">
+                <div class="gallery-info">
+                    <h3>aCarrotGame</h3>
+                    <p>A web-based 3D farming game utilizing AI camera motion tracking, allowing players to physically harvest, sell, and upgrade virtual crops.</p>
+                    <span class="tag">.WebsiteGame</span>
+                </div>
+            </div>
+            <div class="gallery-card show" data-category="3d" data-link="https://www.roblox.com/games/132250526394729/flaoting" >
+                <img src="https://i.imgur.com/TUo4vLh.png" alt="3d">
+                <div class="gallery-info">
+                    <h3>Island</h3>
+                    <p>A conceptual 3D floating architectural model designed in Roblox, featuring modern transparent structures and a central lighthouse tower.</p>
                     <span class="tag">.3D</span>
                 </div>
             </div>
@@ -928,7 +952,7 @@
                 <span id="modal-tag" class="tag"></span>
                 <h3 id="modal-title">Project Title</h3>
                 <p id="modal-desc">Details.</p>
-                <a href="#" class="modal-btn">Execute Link</a>
+                <a href="" id="modal-link" class="modal-btn" target="_blank" rel="noopener noreferrer">Execute Link</a>
             </div>
         </div>
     </div>
@@ -1137,7 +1161,7 @@
                 
                 if (modalLinkBtn) {
                     if (projectLink) {
-                        modalLinkBtn.href = "https://www.roblox.com/games/14179573129/Nigeria-Life"; // Set the URL
+                        modalLinkBtn.href = projectLink; // Set the URL
                         modalLinkBtn.style.display = 'inline-block'; // Show the button
                     } else {
                         // If you forgot to add a data-link to a card, hide the button so it doesn't look broken
