@@ -45,7 +45,6 @@ const FALLBACK = {
         { category: "web", title: "aCarrotGame", description: "A web-based 3D farming game utilizing AI camera motion tracking, allowing players to physically harvest, sell, and upgrade virtual crops.", image_url: "https://i.imgur.com/by78XVq.png", link_url: "https://brian3dthing.netlify.app/", tag: ".WebsiteGame" },
         { category: "web", title: "創意書院的逃犯Website", description: "An engaging website for the HKSC Open Day, showcasing our best Roblox games, game descriptions, Instagram link, and fun background.", image_url: "https://i.imgur.com/JAR6zH5.png", link_url: "https://rbs-theprisonerofthecreativehk.netlify.app/", tag: ".WebDesign" },
         { category: "3d", title: "Island", description: "A conceptual 3D floating island in Roblox, featuring modern transparent structures and a central lighthouse tower.", image_url: "https://i.imgur.com/TUo4vLh.png", link_url: "https://www.roblox.com/games/132250526394729/flaotingT", tag: ".3D" },
-        { category: "web", title: "X-vectors", description: "Build a website for a company anchoring massive, slow-moving enterprises by turning unstructured paperwork into clean logic for standard internal software systems.", image_url: "https://i.imgur.com/490UKwo.png", link_url: "https://x-vectors.com/", tag: ".WebDesign" }
     ],
     // milestones grouped by year in display order (newest first)
     milestones: [
