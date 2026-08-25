@@ -229,7 +229,6 @@ async function init() {
     setupGalleryFilters();
     setupModal();
     setupTimelineHint();
-    setupContactForm();
 }
 document.addEventListener("DOMContentLoaded", init);
 
@@ -460,44 +459,54 @@ function setupTimelineHint() {
     }
 }
 
-/* --- CONTACT FORM -> supabase contact_messages --- */
-function setupContactForm() {
-    const form = document.getElementById("supabase-form");
-    const status = document.getElementById("form-status");
-    const sendBtn = document.getElementById("send-btn");
+// --- GOOGLE SHEETS CONTACT FORM LOGIC ---
+const contactForm = document.getElementById('google-sheet-form'); // Using your existing form ID
+const submitBtn = document.getElementById('submit-btn');        // Using your existing button ID
+const statusMsg = document.getElementById('contact-message');     // Grabbing the status message element
 
-    form.addEventListener("submit", async e => {
-        e.preventDefault();
+// PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwwSzhR7uB-nhY0i0GzOFiYyx0K4W5dgmKLBgSFy3qv47H42nrzb_faTBIOK-7Jxp8e7Q/exec';
 
-        const name = document.getElementById("form-name").value.trim();
-        const email = document.getElementById("form-email").value.trim();
-        const message = document.getElementById("form-message").value.trim();
+contactForm.addEventListener('submit', e => {
+    e.preventDefault(); // Stop the page from reloading
+    
+    // Loading state
+    submitBtn.disabled = true;
+    statusMsg.textContent = "Transmitting..."; 
+    statusMsg.className = "form-status";
+    
+    // Grab the data from the inputs (using your existing input IDs)
+    const data = {
+        name: document.getElementById('contact-name').value.trim(),
+        email: document.getElementById('contact-email').value.trim(),
+        message: document.getElementById('contact-message').value.trim()
+    };
 
-        if (!name || !email || !message) return;
-
-        sendBtn.disabled = true;
-        status.textContent = "Transmitting...";
-        status.className = "form-status";
-
-        if (!db) {
-            status.textContent = "Backend not connected yet — add your Supabase URL/key in script.js.";
-            status.className = "form-status error";
-            sendBtn.disabled = false;
-            return;
-        }
-
-        try {
-            const { error } = await db.from("contact_messages").insert([{ name, email, message }]);
-            if (error) throw error;
-            status.textContent = "Message sent. Thanks for reaching out!";
-            status.className = "form-status success";
-            form.reset();
-        } catch (err) {
-            console.error(err);
-            status.textContent = "Something went wrong sending your message. Please try again.";
-            status.className = "form-status error";
-        } finally {
-            sendBtn.disabled = false;
-        }
+    // Send the data to Google Apps Script
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors', // This prevents tricky CORS errors
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(() => {
+        // Success state
+        statusMsg.textContent = "Message sent. Thanks for reaching out!";
+        statusMsg.className = "form-status success";
+        contactForm.reset(); // Clear the form
+        
+        // Reset the button after 3 seconds
+        setTimeout(() => { 
+            submitBtn.disabled = false;
+        }, 3000);
+    })
+    .catch(error => {
+        // Error state
+        console.error('Error!', error.message);
+        statusMsg.textContent = "Something went wrong sending your message. Please try again.";
+        statusMsg.className = "form-status error";
+        submitBtn.disabled = false;
     });
-}
+});
