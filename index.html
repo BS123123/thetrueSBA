@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--響應式 ( meta name="viewport" ) -->
     <title>Brian Yu | Portfolio</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
     <nav class="navbar">
@@ -42,12 +40,7 @@
             <span class="section-tag" style="color: var(--text-gray)">// SYSTEM.USER: 2026</span>
             <h1>Brian Yu</h1>
             <p class="bio">High School Student, Metaverse Developer.<br><br>
-                My creative core revolves around the <strong>connection between digital spaces and people</strong>,
-                exploring how technology can serve as a bridge for humanistic warmth. This portfolio website is my
-                flagship creation—not merely an exercise in web development, but a digital stage I built from the ground
-                up. It systematically encapsulates my evolution from Roblox spatial construction and peer co-learning to
-                generative AI applications, showcasing my drive to leverage information technology for community care
-                and the pursuit of excellence.</p>
+            My creative core revolves around the <strong>connection between digital spaces and people</strong>, exploring how technology can serve as a bridge for humanistic warmth. This portfolio website is my flagship creation—not merely an exercise in web development, but a digital stage I built from the ground up. It systematically encapsulates my evolution from Roblox spatial construction and peer co-learning to generative AI applications, showcasing my drive to leverage information technology for community care and the pursuit of excellence.</p>
         </div>
 
         <div class="parallax-container">
@@ -62,7 +55,7 @@
     <div class="swiper-section">
         <div class="swiper mySwiper fade-in">
             <div class="swiper-wrapper" id="swiper-wrapper">
-                <!-- Showcase slides injected by script.js (from Supabase or fallback data) -->
+                <!-- Showcase slides come in by js (from Supabase or fallback data) -->
             </div>
         </div>
     </div>
@@ -72,7 +65,7 @@
         <h2 class="section-title">System Capabilities</h2>
 
         <div class="skills-grid" id="skills-grid">
-            <!-- Skill cards injected by script.js -->
+            <!-- Skill cards come in by js -->
         </div>
     </section>
 
@@ -88,7 +81,7 @@
         </div>
 
         <div class="gallery-grid" id="gallery-grid">
-            <!-- Gallery cards injected by script.js -->
+            <!-- Gallery cards come in by js -->
         </div>
     </section>
 
@@ -97,7 +90,7 @@
         <h2 class="section-title">Milestones</h2>
 
         <div class="timeline" id="timeline">
-            <!-- Timeline items injected by script.js -->
+            <!-- Timeline items come in by js -->
         </div>
     </section>
 
@@ -117,15 +110,13 @@
                 </div>
             </div>
 
-            <form class="contact-form" id="google-sheet-form">
-                <div class="form-group"><input type="text" id="contact-name" placeholder="ID (Name)" required></div>
-                <div class="form-group"><input type="email" id="contact-email" placeholder="Return Address (Email)"
-                        required></div>
-                <div class="form-group"><textarea id="contact-message" placeholder="Payload (Message)" rows="5"
-                        required></textarea></div>
-                <button type="submit" class="send-btn" id="submit-btn">Transmit</button>
+            <form class="contact-form" id="supabase-form">
+                <div class="form-group"><input type="text" id="form-name" placeholder="ID (Name)" required></div>
+                <div class="form-group"><input type="email" id="form-email" placeholder="Return Address (Email)" required></div>
+                <div class="form-group"><textarea id="form-message" placeholder="Payload (Message)" rows="5" required></textarea></div>
+                <button type="submit" class="send-btn" id="send-btn">Transmit</button>
+                <p class="form-status" id="form-status"></p>
             </form>
-
         </div>
     </section>
 
@@ -146,5 +137,4 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="script.js"></script>
 </body>
-
 </html>
