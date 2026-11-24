@@ -2,7 +2,7 @@
   init() 同時向 Supabase 數據庫要 4 組資料：showcase、skills、projects、milestones。
    ============================================================ */
    const SUPABASE_URL = "https://haquucdaoaijdnfaqcfq.supabase.co";
-   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhcXV1Y2Rhb2FpamRuZmFxY2ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyNTIwMDcsImV4cCI6MjA5MTgyODAwN30.-iUHjkOiYiONQEh0QlqHTbsC8EzhFI1Vks4BrdaCtbwE";
+   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhhcXV1Y2Rhb2FpamRuZmFxY2ZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYyNTIwMDcsImV4cCI6MjA5MTgyODAwN30.-iUHjkOiYiONQEh0QlqHTbsC8EzhFI1Vks4BrdaCtbw";
    
    let db = null;
    if (!SUPABASE_URL || SUPABASE_URL.includes("YOUR_SUPABASE_URL")) {
